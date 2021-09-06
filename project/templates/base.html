@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>CEDCOVID</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href = "{% static 'open-iconic/font/css/open-iconic-bootstrap.css'%}" rel="stylesheet">
+
+
+    <style>
+      .ul-no-bullets {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      .p1 {
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .p2 {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .p3 {
+        font-family: "Lucida Console", "Courier New", monospace;
+      }
+
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      /* Color de enlace */
+      a:link {
+        color: rgb(0, 138, 138);
+        background-color: transparent;
+        text-decoration: none;
+      }
+      a:visited {
+        color: rgb(0, 138, 138);
+        background-color: transparent;
+        text-decoration: none;
+      }
+      a:hover {
+        color:rgb(30, 116, 116);
+        background-color: transparent;
+        text-decoration: underline;
+      }
+      a:active {
+        color: rgb(30, 155, 155);
+        background-color: transparent;
+        text-decoration: underline;
+      }
+      .containert {
+        position: relative;
+        max-width: 1000px; /* Maximum width */
+        margin: 0 auto; /* Center it */
+      }
+
+      .containert .content {
+        position: absolute; /* Position the background text */
+        bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+        background: rgb(0, 0, 0); /* Fallback color */
+        background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+        color: #f1f1f1; /* Grey text */
+        width: 1000px; /* Full width */
+        padding: 20px; /* Some padding */
+      }
+
+
+    </style>
+
+
+
+  </head>
+  <body>
+
+
+    <header>
+       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+         <div class="container-fluid">
+         <a class="navbar-brand" href="{% url 'home' %}">
+         <span><strong>CEDC</strong>
+
+         <!-- <lord-icon
+            src="https://cdn.lordicon.com/rivoakkk.json"
+            trigger="hover"
+            colors="primary:#b4b4b4,secondary:#08a88a"
+            stroke="59"
+            style="width:50px;height:50px">
+        </lord-icon> -->
+         <!-- <lord-icon
+              src="https://cdn.lordicon.com/rhbvmjsa.json"
+              stroke="145"
+              trigger="hover"
+              colors="primary:#107c91,secondary:#08a88a"
+              style="width:30px;height:30px">
+          </lord-icon> -->
+         <lord-icon
+             src="https://cdn.lordicon.com/ahatttod.json"
+             trigger="hover"
+             colors="primary:#fafafa ,secondary:#74c79d"
+             stroke="85"
+             style="width:35px;height:35px;padding:0px">
+         </lord-icon>
+          <!-- <lord-icon
+              src="https://cdn.lordicon.com/xjovhxra.json"
+              trigger="loop"
+              colors="primary:#8bd3af,secondary:#8bd3af"
+              style="width:50px;height:50px">
+          </lord-icon> -->
+          <strong>VID</strong></span>
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"id="navbarNavAltMarkup">
+           <div class="navbar-nav ml-auto">
+             {% if user.is_authenticated %}
+             <a class="nav-item nav-link" href="{% url 'create' %}"><span class="oi oi-data-transfer-upload"></span></a>
+             <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><span class="oi oi-account-logout"></span></a>
+              <a class="nav-item nav-link" href="" ><span class="oi oi-project"></span></a>
+             <form id="logout" method="POST" action="{% url 'logout' %}">
+               {% csrf_token %}
+               <input type="hidden" />
+             </form>
+             {% else %}
+             <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
+             <a class="nav-item nav-link" href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </svg></a>
+              {% endif %}
+           </div>
+         </div>
+         </div>
+       </nav>
+     </header>
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+       <div class="container-fluid">
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="#">Home</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'lista_archivos'%}">Conjunto de datos</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'lista_lineas'%}">Lineas de investigación</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'lista_lineas'%}">Términos de uso</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'datos_abiertos'%}">Datos abiertos</a>
+             </li>
+             <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Conjunto de datos
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <li><a class="dropdown-item" href="#">Action</a></li>
+                 <li><a class="dropdown-item" href="#">Another action</a></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item" href="#">Something else here</a></li>
+               </ul>
+             </li>
+
+           </ul>
+
+         </div>
+       </div>
+     </nav>
+
+<!--
+     <header>
+       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+         <div class="container-fluid">
+           <a class="navbar-brand" href="#">Carousel</a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarCollapse">
+             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+               <li class="nav-item">
+                 <a class="nav-link active" aria-current="page" href="#">Home</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#">Link</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+               </li>
+             </ul>
+             <form class="d-flex">
+               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success" type="submit">Search</button>
+             </form>
+           </div>
+         </div>
+       </nav>
+     </header> -->
+
+<main>
+       <div class="container-fluid">
+
+         {% block content %}
+         {% endblock %}
+
+       </div>
+  <!-- FOOTER -->
+  <footer class="container">
+
+  </footer>
+</main>
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+  </body>
+</html>

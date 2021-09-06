@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+<div class="container py-4">
+  <div class="row pb-2">
+    <div class="col">
+      <h1><strong>{{perfil_archivo.nombre_archivo}}</strong></h1>
+    </div>
+  </div>
+  <div class="row ">
+      <div class="col-8">
+          <li class="list-group-item bg-light border rounded-3"><strong>Descripción: </strong>{{perfil_archivo.descripcion_archivo}}</li>
+          <li class="list-group-item"><strong>Categoría: </strong>
+            {% for item in perfil_archivo.categoria_archivo.all %}
+            {{item}}
+            {% endfor %}
+            <!-- {{perfil_archivo.categoria_archivo.all}}</li> -->
+          <li class="list-group-item"><strong>Palabras clave: </strong>{% for pc in perfil_archivo.listar_palabras_clave %}<a href=""><span class="badge rounded-pill bg-primary">{{pc}}</span></a>{% endfor %}</li>
+          <li class="list-group-item"><strong>Fecha modificación: </strong>{{perfil_archivo.datamod_archivo}}</li>
+          <li class="list-group-item"><strong>Información de contacto: </strong>{{perfil_archivo.informacion_contacto}}</li>
+      </div>
+
+     <div class="col-4">
+       <div class="h-100 p-5 bg-light border rounded-3">
+         <h2>Add borders</h2>
+       </div>
+     </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="b-example-divider"></div>
+
+<div class="container px-4 py-5" id="custom-cards">
+  <h2 class="pb-2 border-bottom">Custom cards</h2>
+
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="col">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{%  endblock %}

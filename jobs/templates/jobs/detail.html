@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row"
+  <div class = "col-4">
+    <img src="{{job.icon.url}}" class="img-fluid" />
+  </div>
+  <div class="col-10"
+    <a href="{{job.url}}"><h1>{{job.title}}</h1></a>
+  </div>
+</div>
+
+<div class="row"
+  <div class = "col-8">
+    <img src="{{job.image.url}}" class="img-fluid" />
+  </div>
+</div>
+
+<div class="row"
+  <div class = "col-4 text-right" >
+  <p>Publicado: {{job.pub_date_pretty}}</p>
+  </div>
+</div>
+
+
+<div class="row"
+  <div class = "col-8" >
+  <h5>{{job.body}}</h5>
+  </div>
+</div>
+
+
+{% endblock %}

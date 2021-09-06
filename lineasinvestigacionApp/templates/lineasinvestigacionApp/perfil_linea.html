@@ -1,0 +1,122 @@
+
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+  <div class="containert">
+
+      <img src="{{obj.image.url}}" width = "1000px">
+      <div class="content">
+       <h2><strong>{{obj.nombre_linea}}</strong></h2>
+       <p>{{obj.body}}</p>
+      </div>
+
+
+  </div>
+</div>
+
+
+
+
+ <!-- <img src="{{obj.image.url}}" class="img-fluid" alt="Responsive image"/> -->
+
+ <div class="container py-4 ">
+   <div class="row pb-2 container-fluid">
+
+
+      <!-- <div style="background-image: url({{obj.image.url}})"  > -->
+          <div class="link-light">
+              <h2><strong>{{obj.nombre_linea}}</strong></h2>
+       <h4 class="text-muted">{% for int in obj.integrante.all %} {{int}}, {% endfor %}</h4>
+       {{obj.body}}
+          <!-- </div> -->
+       </div>
+   </div>
+
+
+
+
+
+
+
+   <div class="row align-items-md-stretch">
+
+
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-white bg-dark rounded-3 text-center">
+              <h2>Conjunto de datos</h2>
+
+              <div class="row text-center p-2 ">
+                <div class="col-4 mx-auto">
+                  <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#datos"><i class="icon-chevron-right"></i> Datos  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="h-100 p-5 bg-light border rounded-3 text-center">
+
+              <h2>Producciones asociadas</h2>
+              <div class="row text-center ">
+                <div class="col-4 mx-auto ">
+                  <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#attrs"><i class="icon-chevron-right"></i> Proyectos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+</div>
+
+<div class="container py-4">
+  <div id="myGroup" >
+      <div class="accordion-group">
+                <div class="collapse indent" id="datos"  data-parent="#myGroup">
+                  <h3><strong>Conjuntos</strong></h3>
+                    {% render_table table_archivos %}
+                </div>
+
+                <div class="collapse indent" id="attrs"  data-parent="#myGroup">
+                  <h3><strong>Producciones asociadas</strong></h3>
+                    {% render_table table_producto %}
+
+                </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="container px-1 py-5" id="custom-cards">
+   <h2 class="pb-2 border-bottom">Datasets</h2>
+
+   <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+     {% for archivo in archivos.all%}
+
+     <div class="col mx-auto d-flex">
+       <a href="{% url 'perfil_archivo' id_archivo=archivo.id_archivo %}">
+
+       <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+
+
+           <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">  <h3>{{archivo.nombre_archivo}}</h3></h2>
+           <ul class="d-flex list-unstyled mt-auto">
+
+
+           </ul>
+         </div>
+       </div></a>
+       {% endfor %}
+     </div>
+
+
+
+
+   </div>
+ </div>
+
+
+{%  endblock %}

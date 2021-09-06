@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- {% for linea in filtro_linea.qs %}
+{{linea.nombre_linea}}
+{% endfor %} -->
+
+<div class="container-fluid">
+  <div class="row">
+
+
+
+
+
+    <div class="col-6 center">
+    {% for linea in filtro_linea.qs %}
+      <div class="card mb-3" >
+         <div class="row no-gutters justify-content-start pt-3 pb-3">
+
+           <div class="col my-auto">
+             <div class="card-body">
+
+              <a href="{% url 'lineas' id_linea=linea.id_linea %}"><h3>{{linea.nombre_linea}}</h3></a>
+
+
+             </div>
+           </div>
+         </div>
+       </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+{%  endblock %}
