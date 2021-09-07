@@ -68,6 +68,7 @@ __pycache__/
 local_settings.py
 .vscode/
 /media
+/static
 *.log
 *.pot
 *.pyc
@@ -75,6 +76,8 @@ __pycache__/
 local_settings.py
 .vscode/
 /media
+/static
+/project/static
 /project/templates/media
 
 # Flask stuff:
