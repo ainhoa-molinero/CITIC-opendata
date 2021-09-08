@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS =  []
-
+SECURE_SSL_REDIRECT = False
 
 # Application definition
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_tables2',
     'django_filters',
-    
+
 
 ]
 
