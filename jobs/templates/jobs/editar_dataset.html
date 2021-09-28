@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{%  if error %}
+{{ error }}
+<br />
+<br />
+
+{%  endif %}
+<div class="container">
+    <div class="px-4 py-5 my-5 text-center">
+      <h1 class="display-5 fw-bold">Actualizar dataset</h1>
+    </div>
+  <form action={{edit_form}} method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="table-responsive " >
+      <table class='table'>
+        {{ form.as_table }}
+
+      </table>
+
+
+
+    </div>
+    <div class="row justify-content-center">
+      <button type="submit" value="Submit" class="btn btn-primary" >Actualizar</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+<br />
+
+
+<br />
+<br />
+
+
+{%  endblock %}
