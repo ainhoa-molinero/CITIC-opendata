@@ -1,0 +1,113 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <aside class="col-3">
+          <div class="card">
+          <article class="card-group-item">
+            <header class="card-header"><h6 class="title">Categorías </h6></header>
+            <div class="filter-content">
+              <div class="list-group list-group-flush">
+                {%  for c in categories%}
+                  {% for key, value in c.items %}
+                    <a href="?q={{value}}" class="list-group-item">{{key}}</a>
+                  {% endfor %}
+                {% endfor %}
+
+
+
+              </div>  <!-- list-group .// -->
+            </div>
+          </article> <!-- card-group-item.// -->
+          <article class="card-group-item">
+            <header class="card-header"><h6 class="title">Líneas de investigación </h6></header>
+            <div class="filter-content">
+              <div class="list-group list-group-flush">
+                {%  for c in lines %}
+                  {% for key, value in c.items %}
+                    <a href="?q={{value}}" class="list-group-item">{{key}}</a>
+                  {% endfor %}
+                {% endfor %}
+                <!-- <a href="#" class="list-group-item">Procesamiento y visualización de mutaciones <span class="float-right badge badge-light round">142</span> </a>
+                <a href="#" class="list-group-item"> Integración, explotación y visualización de datos de carga viral  <span class="float-right badge badge-light round">3</span>  </a> -->
+
+              </div>
+            </div>
+          </article>
+          </div> <!-- card.// -->
+        </aside> <!-- col.// -->
+        <div class="col-9">
+          {% for p in filtro.qs %}
+          <div class="card mb-3" >
+             <div class="row no-gutters justify-content-start pt-3 pb-3">
+
+               <div class="col my-auto">
+                 <div class="card-body">
+
+                  <a href="{% url 'perfil_producto' id_producto=p.id_producto  %}"><h3>{{p.nombre_producto}}</h3></a>
+
+                {% for pc in producto.listar_palabras_clave %}<a href="?q={{pc}}"><span class="badge rounded-pill bg-primary">{{pc}}</span></a>{% endfor %}
+                  <p class="muted">
+                   {% for linea in archivo.lineainvestigacion_set.all %}
+                  <a href="{% url 'lineas' id_linea=linea.id_linea  %}">{{p.nombre_producto}}</a> |
+                   {% endfor %}
+                  </p>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+
+    {%  for c in p_clavee%}
+      {% for key, value in c.items %}
+        <a href="?q={{value}}" class="list-group-item">{{key}}</a>
+      {% endfor %}
+    {% endfor %}
+
+
+<!--
+  <div class="container-xl py-2">
+
+    <div class="row">
+
+      {% for p in producto %}
+      <div class="col-md-4 align-items-stretch pt-3 ">
+        <div class="card h-100">
+          <a href="{% url 'perfil_producto' id_producto=p.id_producto  %}">
+          <div class="card-body">
+
+            <h3>{{p.nombre_producto}}</h3></a>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%  endblock %}

@@ -11,7 +11,7 @@
 
 <form method='get' action="{% url 'lista_archivos' %}" enctype="multipart/form-data">
 
-<div class="col-3 pb-3 pt-3">
+<div class="col-3 pb-3 pt-3 filter" >
    {{ filtro.form}}
 </div>
 
@@ -35,7 +35,7 @@
         <aside class="col-3">
           <div class="card">
           <article class="card-group-item">
-            <header class="card-header"><h6 class="title">Categorías </h6></header>
+            <header class="card-header"><h6 class="title">Áreas de investigación </h6></header>
             <div class="filter-content">
               <div class="list-group list-group-flush">
                 {%  for c in categories%}
@@ -49,7 +49,7 @@
               </div>  <!-- list-group .// -->
             </div>
           </article> <!-- card-group-item.// -->
-          <article class="card-group-item">
+          <!-- <article class="card-group-item">
             <header class="card-header"><h6 class="title">Líneas de investigación </h6></header>
             <div class="filter-content">
               <div class="list-group list-group-flush">
@@ -58,13 +58,11 @@
                     <a href="?q={{value}}" class="list-group-item">{{key}}</a>
                   {% endfor %}
                 {% endfor %}
-                <!-- <a href="#" class="list-group-item">Procesamiento y visualización de mutaciones <span class="float-right badge badge-light round">142</span> </a>
-                <a href="#" class="list-group-item"> Integración, explotación y visualización de datos de carga viral  <span class="float-right badge badge-light round">3</span>  </a> -->
 
-              </div>  <!-- list-group .// -->
+              </div>
             </div>
-          </article> <!-- card-group-item.// -->
-          <article class="card-group-item">
+          </article>  -->
+          <!-- <article class="card-group-item">
             <header class="card-header"><h6 class="title">Formato</h6></header>
             <div class="filter-content">
               <div class="card-body">
@@ -80,11 +78,11 @@
                   <input class="" type="checkbox" name="myradio" value="">
                   <span class="form-check-label">Blue</span>
                 </label>
-              </div> <!-- card-body.// -->
+              </div>
             </div>
-          </article> <!-- card-group-item.// -->
-          </div> <!-- card.// -->
-        </aside> <!-- col.// -->
+          </article> -->
+          </div>
+        </aside>
         <div class="col-9">
           {% for archivo in filtro.qs %}
           <div class="card mb-3" >

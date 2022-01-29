@@ -45,6 +45,17 @@ class Palabras_clave(django_filters.FilterSet):
         ).distinct()
 
 #
-#
+class FiltProductos(django_filters.FilterSet):
+    q = django_filters.CharFilter(method='my_custom_filter',label="",widget=forms.TextInput(attrs={'class': 'form-control input-sm', 'placeholder':'Buscar'}))
+    palabras_clave = Producto.objects.filter(archivo__palabras_clave='')
+    class Meta:
+        model = Producto
+        fields = ['q']
+        # widgets = {
+        #             'q': forms.Textarea(attrs={'class': 'form-control'}),
+        #         }
 
-#
+    def my_custom_filter(self, queryset, name, value):
+        return Producto.objects.filter(
+            Q(palabras_clave__icontains=value) | Q(nombre_producto__icontains=value) | Q(categoria_archivo=value) | Q(lineainvestigacion__nombre_linea__icontains=value)
+        ).distinct()

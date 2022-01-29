@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 import django_tables2 as tables
 import django_filters
 from django_tables2.utils import A
@@ -15,6 +16,7 @@ class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True)
     nombre_producto = models.CharField(max_length=255)
     url_producto = models.URLField(max_length=255, null=True)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,null=True)
     pub_date =  models.DateTimeField()
     def __str__(self):
         return str(self.nombre_producto)
@@ -30,6 +32,7 @@ class Categoria(models.Model):
 class Archivo(models.Model):
     id_archivo = models.AutoField(primary_key=True)
     nombre_archivo = models.CharField(max_length=255)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,null=True)
     descripcion_archivo = models.TextField(max_length=500,  null=True, blank=True)
     categoria_archivo = models.ManyToManyField(Categoria, max_length=500, blank=True)
     palabras_clave = models.CharField(max_length=255,  null=True, blank=True)
@@ -57,9 +60,9 @@ class LineaInvestigacion(models.Model):
     id_linea = models.AutoField(primary_key=True)
     nombre_linea = models.CharField(max_length=255)
     body = models.TextField()
-    image = models.ImageField(upload_to = 'images/')
-    icon = models.ImageField(upload_to = 'images/')
-    visibilidad = models.CharField(max_length=10, choices=(('publico','publico'),('privado','privado')), default='privado')
+    image = models.ImageField(upload_to = 'images/', null=True, blank=True)
+    #icon = models.ImageField(upload_to = 'images/')
+    visibilidad = models.CharField(max_length=10, choices=(('publico','publico'),('privado','privado')), default='publico')
     # hunter = models.ForeignKey(User, on_delete=models.CASCADE)
     integrante = models.ManyToManyField(Integrante, blank=True)
     archivo = models.ManyToManyField(Archivo, blank=True)
@@ -68,6 +71,13 @@ class LineaInvestigacion(models.Model):
     def __str__(self):
         return str(self.nombre_linea)
 
+
+class Permiso(models.Model):
+    id_linea = models.ForeignKey(LineaInvestigacion, on_delete=models.CASCADE,related_name='id_permiso')
+    id_usuario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    permiso = models.CharField(max_length=10, choices=(('Jefe', 'Jefe'), ('Técnico', 'Técnico'), ( 'Admin', 'Admin')))
+    def __str__(self):
+        return str(self.id_usuario) +' - '+ str(self.id_linea)
 
 class LineaInvestigacionTable(tables.Table):
     class Meta:

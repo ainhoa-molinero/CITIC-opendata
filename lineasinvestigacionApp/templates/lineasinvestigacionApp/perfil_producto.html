@@ -4,12 +4,34 @@
 
 
 
+<div class="container py-4">
+  <div class="row pb-2">
+    <div class="col">
+      <h1><strong>{{perfil_producto.nombre_archivo}}</strong></h1>
+    </div>
+  </div>
+  <div class="row ">
+      <div class="col-8">
+          <li class="list-group-item bg-light border rounded-3"><strong>Descripción: </strong>{{perfil_archivo.descripcion_archivo}}</li>
+          <li class="list-group-item"><strong>Categoría: </strong>
+            {% for item in perfil_archivo.categoria_archivo.all %}
+            {{item}}
+            {% endfor %}
+            <!-- {{perfil_archivo.categoria_archivo.all}}</li> -->
+          <li class="list-group-item"><strong>Palabras clave: </strong>{% for pc in perfil_archivo.listar_palabras_clave %}<a href=""><span class="badge rounded-pill bg-primary">{{pc}}</span></a>{% endfor %}</li>
+          <li class="list-group-item"><strong>Fecha modificación: </strong>{{perfil_archivo.datamod_archivo}}</li>
+          <li class="list-group-item"><strong>Información de contacto: </strong>{{perfil_archivo.informacion_contacto}}</li>
+      </div>
 
-  <div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">Columns with icons</h2>
-
+     <div class="col-4">
+       <div class="h-100 p-5 bg-light border rounded-3">
+         <h2>Add borders</h2>
+       </div>
+     </div>
 
   </div>
+</div>
+
 
 
 

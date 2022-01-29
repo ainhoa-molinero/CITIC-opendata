@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container-xl py-2">
+
+    <div class="row">
+
+      {% for linea in lineas %}
+      <div class="col-md-4 align-items-stretch pt-3 ">
+        <div class="card h-100">
+          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+          <a href="{% url 'lineas' id_linea=linea.id_linea  %}"><img src="{{linea.image.url}}" class="img-fluid" style ="max-height:1000px;"/>
+
+          <div class="card-body">
+
+            <h3>{{linea.nombre_linea}}</h3></a>
+            <p class="card-text">{{linea.body}}.</p>
+            <div class="d-flex justify-content-between align-items-center">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+</div>
+
+
+
+
+
+
+
+
+{%  endblock %}

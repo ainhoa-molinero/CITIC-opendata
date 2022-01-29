@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>CEDCOVID</title>
+    <title>CITIC OPENDATA</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
 
@@ -19,8 +19,9 @@
 
     <!-- Bootstrap core CSS -->
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href = "{% static 'open-iconic/font/css/open-iconic-bootstrap.css'%}" rel="stylesheet">
 
 
@@ -86,6 +87,9 @@
         max-width: 1000px; /* Maximum width */
         margin: 0 auto; /* Center it */
       }
+      span {
+          font-size: 20px;
+      }
 
       .containert .content {
         position: absolute; /* Position the background text */
@@ -96,6 +100,26 @@
         width: 1000px; /* Full width */
         padding: 20px; /* Some padding */
       }
+      .filter {
+        color: #33FF3C;;
+    }
+      #page-container {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      #content-wrap {
+        padding-bottom: 2rem;    /* Footer height */
+      }
+
+      #footer {
+        position: absolute;
+        background-color: #000302 ;
+        bottom: 0;
+        width: 100%;
+        /* height: 18rem;          */
+      }
+
 
 
     </style>
@@ -104,13 +128,14 @@
 
   </head>
   <body>
-
+  <div id="page-container">
+    <div id="content-wrap">
 
     <header>
        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
          <div class="container-fluid">
          <a class="navbar-brand" href="{% url 'home' %}">
-         <span><strong>CEDC</strong>
+         <span><strong>CITIC  </strong>
 
          <!-- <lord-icon
             src="https://cdn.lordicon.com/rivoakkk.json"
@@ -126,37 +151,42 @@
               colors="primary:#107c91,secondary:#08a88a"
               style="width:30px;height:30px">
           </lord-icon> -->
-         <lord-icon
+         <!-- <lord-icon
              src="https://cdn.lordicon.com/ahatttod.json"
              trigger="hover"
              colors="primary:#fafafa ,secondary:#74c79d"
              stroke="85"
              style="width:35px;height:35px;padding:0px">
-         </lord-icon>
+         </lord-icon> -->
+         <img src="/media/images/logocitic.png"  width=40>
           <!-- <lord-icon
               src="https://cdn.lordicon.com/xjovhxra.json"
               trigger="loop"
               colors="primary:#8bd3af,secondary:#8bd3af"
               style="width:50px;height:50px">
           </lord-icon> -->
-          <strong>VID</strong></span>
+          <strong>PENDATA</strong></span>
          </a>
+
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
 
-         <div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"id="navbarNavAltMarkup">
+         <div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
            <div class="navbar-nav ml-auto">
              {% if user.is_authenticated %}
-             <a class="nav-item nav-link" href="{% url 'create' %}"><span class="oi oi-data-transfer-upload"></span></a>
+             <a class="nav-item nav-link" href="{% url 'create' %}">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+                 <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z"/>
+                 <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/></svg>
              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><span class="oi oi-account-logout"></span></a>
-              <a class="nav-item nav-link" href="" ><span class="oi oi-project"></span></a>
+
+              <a class="nav-item nav-link" href="{% url 'perfil_usuario' %}" ><span class="oi oi-person"></span></a>
              <form id="logout" method="POST" action="{% url 'logout' %}">
                {% csrf_token %}
                <input type="hidden" />
              </form>
              {% else %}
-             <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
              <a class="nav-item nav-link" href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -168,27 +198,29 @@
        </nav>
      </header>
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+<main>
+<nav class="navbar navbar-expand-lg align-items-center justify-content-center justify-content-lg-start">
 
        <div class="container-fluid">
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
              <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="#">Home</a>
+               <a class="nav-link" href="{% url 'lista_archivos'%}" style="font-family:sans-serif">Conjunto de datos</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="{% url 'lista_archivos'%}">Conjunto de datos</a>
+               <a class="nav-link" href="{% url 'lista_lineas'%}" style="font-family:sans-serif">Áreas de investigación</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="{% url 'lista_lineas'%}">Lineas de investigación</a>
+               <a class="nav-link" href="{% url 'lista_productos'%}" style="font-family:sans-serif">Producciones</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="{% url 'lista_lineas'%}">Términos de uso</a>
+               <a class="nav-link" href="{% url 'datos_abiertos'%}" style="font-family:sans-serif">Datos abiertos</a>
              </li>
-             <li class="nav-item">
-               <a class="nav-link" href="{% url 'datos_abiertos'%}">Datos abiertos</a>
-             </li>
-             <li class="nav-item dropdown">
+             <!-- <li class="nav-item">
+               <a class="nav-link" href="{% url 'condiciones'%}">Términos de uso</a>
+             </li> -->
+             <!-- <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                  Conjunto de datos
                </a>
@@ -198,13 +230,13 @@
                  <li><hr class="dropdown-divider"></li>
                  <li><a class="dropdown-item" href="#">Something else here</a></li>
                </ul>
-             </li>
+             </li> -->
 
            </ul>
 
          </div>
        </div>
-     </nav>
+</nav>
 
 <!--
      <header>
@@ -235,18 +267,53 @@
        </nav>
      </header> -->
 
-<main>
-       <div class="container-fluid">
+<!-- <main> -->
 
-         {% block content %}
-         {% endblock %}
+        <div class="container-fluid pt-5">
+             {% block content %}
+             {% endblock %}
 
-       </div>
+        </div>
+     </div>
   <!-- FOOTER -->
-  <footer class="container">
 
-  </footer>
 </main>
+
+<br><br><br>
+<br><br><br>
+
+
+<footer class="text-muted pb-1 pt-4 " id="footer" style=" height: 7rem; ">
+  <div class="container text-center">
+    <a href="https://citic.udc.es/"  class="pr-2">
+      <img src="/media/images/citic.png"  width=100>
+    </a>
+    <a href="http://gain.xunta.gal/"  class="pr-2">
+      <img src="/media/images/gain.png"  width=120>
+    </a>
+    <a href="https://www.xunta.gal/"  class="pr-2">
+      <img src="/media/images/xunta.png"  width=110>
+    </a>
+    <a href="https://www.udc.es/"  class="pr-2">
+      <img src="/media/images/udc.png"  width=140>
+    </a>
+
+
+
+
+  </div>
+</footer>
+
+<!-- <footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.0/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer> -->
+
 
 
 <!-- JavaScript Bundle with Popper -->
@@ -257,6 +324,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 
-
+    </div>
   </body>
 </html>

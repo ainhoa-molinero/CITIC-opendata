@@ -1,65 +1,80 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<header>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <div class="container-fluid">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarExample01"
-        aria-controls="navbarExample01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarExample01">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Navbar -->
 
-  <!-- Background image -->
-  <div
-    class="p-5 text-center bg-image"
-    style="
-      background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.jpg');
-      height: 400px;
-      margin-top: 58px;
-    "
-  >
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">Heading</h1>
-          <h4 class="mb-3">Subheading</h4>
-          <a class="btn btn-outline-light btn-lg" href="#!" role="button"
-            >Call to action</a
-          >
-        </div>
+<div class="container-xxl ">
+      <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">Preguntas sobre los datos abiertos </h2>
+  <div class="accordion accordion-flush pt-2" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        ¿Qué son los datos abiertos?
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body"> Los datos abiertos son aquellos datos que cualquiera es libre de utilizar, reutilizar y redistribuir, con el único límite, en su caso, del requisito de atribución de su fuente o reconocimiento de su autoría. </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        ¿Qué es la reutilización de la información del sector público?
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          La reutilización de la información del sector público consiste en el uso, por parte de personas físicas o jurídicas, de información generada por organismos del sector público, con fines comerciales o no.
+          La reutilización supone, a modo ilustrativo, actividades como la copia, difusión, modificación, adaptación, extracción, reordenación y combinación de la información.
       </div>
     </div>
   </div>
-  <!-- Background image -->
-</header>
 
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        ¿Para qué reutilizar los datos públicos?
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        La reutilización de la información del sector público facilita el desarrollo de nuevos productos, servicios y soluciones de alto valor socioeconómico.<br><br>
+        Igualmente, permite revertir en la sociedad el conocimiento y los beneficios directos derivados de la actividad de las administraciones públicas en condiciones de transparencia.<br><br>
+        La reutilización ayuda, así, a mejorar la fiabilidad y seguridad de los datos que aquéllas gestionan y contribuye, además, a un diseño más cercano y eficiente de los servicios públicos.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+         ¿Para qué sirven los Datos Abiertos?
+      </button>
+    </h2>
+    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        El principal objetivo de la apertura de datos es que cualquier persona u organización pueda consultar y/o crear productos o servicios derivados a partir de ellos, lo que supone tanto un ahorro de costes y gestión, como la generación de nuevos recursos y riqueza.<br><br>
+        Los datos abiertos tienen un gran valor potencial, su reutilización supone eliminar gastos duplicados, conseguir una mayor transparencia en los procesos del sector público y establecer mecanismos de mejora y colaboración, así como generar servicios a bajo coste.<br><br>
+        Para desarrolladores, empresas, entidades, asociaciones y ciudadanos en general, la reutilización de datos abiertos permite la elaboración de nuevos productos y servicios que aportan valor, innovación, conocimiento y oportunidades de negocio.
+
+
+       </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+        ¿Qué son los datos abiertos?
+      </button>
+    </h2>
+    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body"> Los datos abiertos son aquellos datos que cualquiera es libre de utilizar, reutilizar y redistribuir, con el único límite, en su caso, del requisito de atribución de su fuente o reconocimiento de su autoría. </div>
+    </div>
+  </div>
+</div>
+
+</div>
 
 
 {%  endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import LineaInvestigacion, Integrante, Archivo, Producto, Categoria
 from .models import LineaInvestigacionTable, ArchivosTable, ProductoTable
-from .filters import Filtro
+from .filters import Filtro, FiltProductos
 from django_tables2 import RequestConfig
 
 
@@ -40,7 +40,7 @@ def perfil_producto(request, id_producto):
 
 def lista_archivos(request):
     # lista_archivos = Archivo.objects.all()
-    filtro = Filtro(request.GET, queryset = Archivo.objects.all())
+    filtro = Filtro(request.GET, queryset = Archivo.objects.all().order_by('-fecha'))
     # category = Archivo.objects.all().values('categorias').distinct()
     # categories = Archivo.objects.all().values_list('categoria_archivo', flat=True).distinct()
     categories = Categoria.objects.values_list('nombre', flat=True).distinct().order_by('nombre')
@@ -65,6 +65,39 @@ def lista_lineas(request):
 def datos_abiertos(request):
 
     return render(request, 'lineasinvestigacionApp/datosabiertos.html' )
+
+
+def condiciones(request):
+
+    return render(request, 'lineasinvestigacionApp/condiciones.html' )
+
+
+def lista_productos(request):
+    # lista_archivos = Archivo.objects.all()
+    producto =  Producto.objects.all().order_by('nombre_producto')
+    filtro = FiltProductos(request.GET, queryset = Producto.objects.all().order_by('-nombre_producto'))
+    categories = Categoria.objects.values_list('nombre', flat=True).distinct().order_by('nombre')
+    categories = list(categories)
+    categories = [ {c : c.replace(' ',  '+')} for c in categories ]
+
+    lines = LineaInvestigacion.objects.values_list('nombre_linea', flat=True).distinct()
+    lines = list(lines)
+    lines = [ {c : c.replace(' ',  '+')} for c in lines ]
+    return render(request, 'lineasinvestigacionApp/lista_productos.html', {'producto':producto, 'filtro':filtro, 'categories':categories,  'lines': lines})
+
+
+
+
+@login_required(login_url="/login/login")
+def perfil_usuario(request):
+    id_usuario = request.user.id
+    print(request.user.first_name)
+
+    lineas = LineaInvestigacion.objects.filter(id_permiso__id_usuario=id_usuario).filter(id_permiso__permiso__in=['Jefe','Admin'])
+    # archivos = Archivo.objects.filter(autor=id_usuario).filter(id_permiso__permiso__in=['Jefe','Admin'])
+    # productos = Producto.objects.filter(autor=id_usuario).filter(id_permiso__permiso__in=['Jefe','Admin'])
+    return render(request, 'lineasinvestigacionApp/perfil_usuario.html', {'lineas':lineas} )
+
 
 
 # def categorias(request):
