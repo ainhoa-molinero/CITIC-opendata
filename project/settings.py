@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['opendata.citic.udc.es', '10.56.67.44', 'wwww.opendata.citic.udc.es', 'localhost']
+ALLOWED_HOSTS =  ['opendata.citic.udc.es', '10.56.67.44', 'wwww.opendata.citic.udc.es', 'localhost', '127.0.0.1:8000' ]
 
 SECURE_SSL_REDIRECT = False
 
