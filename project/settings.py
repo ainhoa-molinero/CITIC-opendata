@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS =  ['opendata.citic.udc.es', '10.56.67.44', 'wwww.opendata.citic.udc.es', 'localhost', '127.0.0.1:8000' ]
-
+USE_X_FORWARDED_HOST = True
 SECURE_SSL_REDIRECT = False
 
 # Application definition
