@@ -76,8 +76,7 @@ __pycache__/
 local_settings.py
 .vscode/
 
-/static
-/project/static
+
 
 
 # Flask stuff:
