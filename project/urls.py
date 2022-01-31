@@ -12,4 +12,4 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('jobs/', include('jobs.urls')),
     path('lineas/', include('lineasinvestigacionApp.urls')),
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
