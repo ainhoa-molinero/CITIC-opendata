@@ -60,7 +60,7 @@ class LineaInvestigacion(models.Model):
     id_linea = models.AutoField(primary_key=True)
     nombre_linea = models.CharField(max_length=255)
     body = models.TextField()
-    image = models.ImageField(upload_to = 'images/', null=True, blank=True)
+    image = models.ImageField(upload_to = '/static/images/', null=True, blank=True)
     #icon = models.ImageField(upload_to = 'images/')
     visibilidad = models.CharField(max_length=10, choices=(('publico','publico'),('privado','privado')), default='publico')
     # hunter = models.ForeignKey(User, on_delete=models.CASCADE)
