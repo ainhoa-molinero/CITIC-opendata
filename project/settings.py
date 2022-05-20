@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS =  ['opendata.citic.udc.es', '10.56.67.44', 'wwww.opendata.citic.udc.es', 'localhost', '127.0.0.1:8000' ]
 
@@ -130,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, 'project/static/')
+os.path.join(BASE_DIR, '/static/')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
