@@ -3,6 +3,8 @@ from django.conf import settings
 import django_tables2 as tables
 import django_filters
 from django_tables2.utils import A
+from django.db import models
+
 
 class Integrante(models.Model):
     id_integrante = models.AutoField(primary_key=True)

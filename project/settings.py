@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django_filters',
 
 
-
 ]
 
 MIDDLEWARE = [
@@ -56,9 +55,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
+
 ]
+# #DataFlair CMS
+# SITE_ID = 1
+
 
 ROOT_URLCONF = 'project.urls'
+
+#DataFlair CMS
+# CMS_TEMPLATES = [
+#     ('home.html', 'Home page template'),
+# ]
+
 
 TEMPLATES = [
     {
@@ -71,6 +82,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # #DataFlair
+                # 'cms.context_processors.cms_settings',
+                # 'django.template.context_processors.i18n',
+                # #DataFlair# Sekizai
+                # 'sekizai.context_processors.sekizai',
+
             ],
         },
     },
@@ -116,6 +133,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+# LANGUAGES = [
+#     ('en', 'English'),
+#     ('de', 'German'),
+# ]
 
 TIME_ZONE = 'UTC'
 
