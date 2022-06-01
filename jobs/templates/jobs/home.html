@@ -3,6 +3,7 @@
 {% block content %}
 
 
+<div class="flex-wrapper ">
 
 <div class="px-4 py-0.1 my-5 text-center">
 
@@ -26,6 +27,7 @@
           {% for linea in mis_iconos %}
           <div class="feature col">
             <a href="{% url 'lineas' id_linea=linea.id_linea %}" style="color:black; text-decoration:hover">
+
               <lord-icon
                 src={{linea.img_src}}
                 trigger="morph-two-way"
@@ -161,6 +163,6 @@
 
   <div class="b-example-divider"></div>
 
-
+</div>
 
 {% endblock %}
