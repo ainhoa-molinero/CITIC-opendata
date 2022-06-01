@@ -10,6 +10,32 @@ def home(request):
     # jobs = Job.objects
     archivos = Archivo.objects.order_by('-fecha').distinct()
     archivo_dicc = {}
+    # context = [
+    # {"nombre": "Ciberseguridad", "img_src": "https://cdn.lordicon.com/rqqkvjqf.json"},
+    # {"nombre": "Ciencia e ingeniería de datos", "img_src": "https://cdn.lordicon.com/gqdnbnwt.json"},
+    # {"nombre": "Computación de altas prestaciones", "img_src": "https://cdn.lordicon.com/wrprwmwt.json"},
+    # {"nombre": "Inteligencia artificial", "img_src": "https://cdn.lordicon.com/soseozvi.json"},
+    # {"nombre": "Servicios y redes inteligentes", "img_src": "https://cdn.lordicon.com/tclnsjgx.json"},
+    #
+    # ]
+    context = {
+    "mis_iconos":
+    [
+    {"id_linea":7,"nombre_linea": "Ciberseguridad", "img_src": "https://cdn.lordicon.com/rqqkvjqf.json"},
+    {"id_linea":8,"nombre_linea": "Computación de altas prestaciones", "img_src": "https://cdn.lordicon.com/wrprwmwt.json"},
+    {"id_linea":9,"nombre_linea": "Inteligencia artificial", "img_src": "https://cdn.lordicon.com/soseozvi.json"},
+    {"id_linea":4,"nombre_linea": "Servicios y redes inteligentes", "img_src": "https://cdn.lordicon.com/tclnsjgx.json"},
+    {"id_linea":10,"nombre_linea": "Ciencia e ingeniería de datos", "img_src": "https://cdn.lordicon.com/gqdnbnwt.json"}],
+    }
+
+    # [
+    # {"nombre": "Ciberseguridad", "image": {"imag_src": "https://cdn.lordicon.com/rqqkvjqf.json", "trigger":"morph-two-way", "colors":"primary:#121331,secondary:#e86830", "style":"width:70px;height:70px" }},
+    # {"nombre": "Ciencia e ingeniería de datos", "image": {"imag_src": "https://cdn.lordicon.com/gqdnbnwt.json", "trigger":"morph-two-way", "colors":"primary:#121331,secondary:#e86830", "style":"width:70px;height:70px"}},
+    # {"nombre": "Computación de altas prestaciones", "image": {"imag_src": "https://cdn.lordicon.com/wrprwmwt.json", "trigger":"morph-two-way", "colors":"primary:#121331,secondary:#e86830", "style":"width:70px;height:70px"}},
+    # {"nombre": "Inteligencia artificial", "image": {"imag_src": "https://cdn.lordicon.com/soseozvi.json", "trigger":"morph-two-way", "colors":"primary:#121331,secondary:#e86830", "style":"width:70px;height:70px"}},
+    # {"nombre": "Servicios y redes inteligentes", "image": {"imag_src": "https://cdn.lordicon.com/tclnsjgx.json", "trigger":"morph-two-way", "colors":"primary:#121331,secondary:#e86830", "style":"width:70px;height:70px"}},
+    #
+    # ]
     for a in archivos:
         if a.id_archivo not in archivo_dicc.keys():
             archivo_dicc[a.id_archivo] = a
@@ -32,9 +58,9 @@ def home(request):
                 lineas_dicc[l.id_linea] = l
         lineas = [v for v in lineas_dicc.values() ]
 
-    return render(request, 'jobs/home.html', {'lineas':lineas[0:2], 'archivos':archivos[0:3]})
+    return render(request, 'jobs/home.html', {'lineas':lineas, 'archivos':archivos[0:3], "mis_iconos":context.get('mis_iconos')})
 
-
+context= {"mis_iconos":[]}
 # @login_required
 # def create(request):
 #     if request.method == 'POST':
@@ -147,6 +173,25 @@ def edit_form(request, id_archivo):
 
     return render(request, 'jobs/editar_dataset.html', {'form':form})
 
+
+# def lista_lineas(request):
+#     # lista_archivos = Archivo.objects.all()
+#     linea =  LineaInvestigacion.objects.all().order_by('nombre_linea')
+#     filtro_linea = Filtro(request.GET, queryset = linea)
+#
+#     return render(request, 'lineasinvestigacionApp/lista_lineas.html', {'filtro_linea':filtro_linea})
+
+
+# def areas(request, nombre_linea):
+#     ciber = LineaInvestigacion.objects.get(name='Ciberseguridad')
+#     datos = LineaInvestigacion.objects.get(name='Ciencia e ingeniería de datos')
+#     cap = LineaInvestigacion.objects.get(name='Computación de altas prestaciones')
+#     ia = LineaInvestigacion.objects.get(name='Inteligencia artificial')
+#     redes = LineaInvestigacion.objects.get(name='Servicios y redes inteligentes')
+#
+#
+#
+#     return render(request, 'lineasinvestigacionApp/perfil_linea.html', {'ciber':ciber, 'datos':datos, 'cap':cap, 'ia':ia, 'redes':redes})
 
 
 
