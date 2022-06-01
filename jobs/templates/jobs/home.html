@@ -23,7 +23,7 @@
  <div class="container px-4 py-5" id="featured-3">
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 
-          <!-- {% for linea in mis_iconos %}
+          {% for linea in mis_iconos %}
           <div class="feature col">
             <a href="{% url 'lineas' id_linea=linea.id_linea %}" style="color:black; text-decoration:hover">
               <lord-icon
@@ -32,12 +32,12 @@
                 colors="primary:#121331,secondary:#e86830"
                 style="width:70px;height:70px">
             </lord-icon>
-          <p>  {{linea.id_linea}}{{linea.nombre_linea}}</p></a>
+          <p> {{linea.nombre_linea}}</p></a>
           </div>
-            {% endfor %} -->
+            {% endfor %}
 
 
-            {% for linea in lineas %}
+            <!-- {% for linea in lineas %}
             <div class="feature col">
               <a href="{% url 'lineas' id_linea=linea.id_linea %}" style="color:black; text-decoration:hover">
                 <lord-icon
@@ -46,9 +46,9 @@
                   colors="primary:#121331,secondary:#e86830"
                   style="width:70px;height:70px">
               </lord-icon>
-            <p>  {{linea.id_linea}}{{linea.nombre_linea}}</p></a>
+            <p> {{linea.nombre_linea}}</p></a>
             </div>
-              {% endfor %}
+              {% endfor %} -->
     </div>
 
   </div>

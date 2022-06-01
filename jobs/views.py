@@ -9,6 +9,7 @@ from lineasinvestigacionApp.models import LineaInvestigacion, Archivo
 def home(request):
     # jobs = Job.objects
     archivos = Archivo.objects.order_by('-fecha').distinct()
+
     archivo_dicc = {}
     # context = [
     # {"nombre": "Ciberseguridad", "img_src": "https://cdn.lordicon.com/rqqkvjqf.json"},
@@ -21,11 +22,11 @@ def home(request):
     context = {
     "mis_iconos":
     [
-    {"id_linea":7,"nombre_linea": "Ciberseguridad", "img_src": "https://cdn.lordicon.com/rqqkvjqf.json"},
-    {"id_linea":8,"nombre_linea": "Computación de altas prestaciones", "img_src": "https://cdn.lordicon.com/wrprwmwt.json"},
-    {"id_linea":9,"nombre_linea": "Inteligencia artificial", "img_src": "https://cdn.lordicon.com/soseozvi.json"},
-    {"id_linea":4,"nombre_linea": "Servicios y redes inteligentes", "img_src": "https://cdn.lordicon.com/tclnsjgx.json"},
-    {"id_linea":10,"nombre_linea": "Ciencia e ingeniería de datos", "img_src": "https://cdn.lordicon.com/gqdnbnwt.json"}],
+    {"id_linea":LineaInvestigacion.objects.filter(nombre_linea='Ciberseguridad').values('id_linea')[0]['id_linea'],"nombre_linea": "Ciberseguridad", "img_src": "https://cdn.lordicon.com/rqqkvjqf.json"},
+    {"id_linea":LineaInvestigacion.objects.filter(nombre_linea='Computación de altas prestaciones').values('id_linea')[0]['id_linea'],"nombre_linea": "Computación de altas prestaciones", "img_src": "https://cdn.lordicon.com/wrprwmwt.json"},
+    {"id_linea":LineaInvestigacion.objects.filter(nombre_linea='Inteligencia artificial').values('id_linea')[0]['id_linea'],"nombre_linea": "Inteligencia artificial", "img_src": "https://cdn.lordicon.com/soseozvi.json"},
+    {"id_linea":LineaInvestigacion.objects.filter(nombre_linea='Servicios y redes inteligentes').values('id_linea')[0]['id_linea'],"nombre_linea": "Servicios y redes inteligentes", "img_src": "https://cdn.lordicon.com/tclnsjgx.json"},
+    {"id_linea":LineaInvestigacion.objects.filter(nombre_linea='Ciencia e ingeniería de datos').values('id_linea')[0]['id_linea'],"nombre_linea": "Ciencia e ingeniería de datos", "img_src": "https://cdn.lordicon.com/gqdnbnwt.json"}],
     }
 
     # [
